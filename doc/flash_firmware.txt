@@ -1,0 +1,22 @@
+The STLinkUpgrade application has a few command line options that allow you to customize the configuration options for your ST-Link. Use the Java application in the AllPlatforms directory.
+
+Command line options:
+
+    -update: Updates the ST-Link if necessary.
+    -force_prog: Forces writing new firmware (of the same type).
+    -checkVer: Shows the ST-Link version.
+    -checkDfuVer: Shows the bootloader version. ST-Link V2 is DFU v1, ST-Link V2.1 (and potentially variants) is DFU v2, ST-Link V3 is DFU v3.
+    -volume: Sets mass storage device volume name, subject to previously mentioned restrictions.
+    -deleteV: Removes mass storage device volume name.
+    -board: Sets Mbed board ID.
+    -deleteB: Removes board ID.
+
+The upgrader is capable of writing a new firmware to a ST-Link that only has the bootloader installed, meaning the firmware and configuration area can be blank. Specify which firmware variant you want to install on the command line and the program will perform a full setup of it, including writing anti-clone tag, type, configuration, and firmware installed tag. Select only one:
+
+    -jtag: JTAG only
+    -swim: SWIM only
+    -jtag_swim: JTAG and SWIM
+    -msvcp: JTAG with mass storage device and virtual COM port
+    -audio: JTAG with audio
+
+Note when you are using the upgrader with a ST-Link clone that does not have hardware for USB re-enumeration, you will generally have to click "Open in update mode" three times for it to detect the ST-Link. First time will reboot the ST-Link in bootloader mode, but will time out because enumeration takes longer than a second. The second click is still referencing the old device, so will give you an error, and the program will refresh its devices list. The third click will finally have the program communicate with the bootloader.

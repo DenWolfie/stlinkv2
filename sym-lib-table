@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name "custom_symbol")(type "KiCad")(uri "${KIPRJMOD}/libs/symbol/custom_symbol.kicad_sym")(options "oprion")(descr "custom_symbol"))
+  (lib (name "74IEC")(type "KiCad")(uri "${KIPRJMOD}/../74IEC/74IEC.kicad_sym")(options "")(descr "74IEC"))
+)
